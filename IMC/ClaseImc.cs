@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace IMC
 {
@@ -10,13 +11,13 @@ namespace IMC
     {
         //Asignamos los atributos
         private string nombre, mensaje_nivel;
-        private float estatura;
-        private float peso;
-        private float sancadas;
-        private float pasos;
-        private float imc;
-        private float distancia_recorrida;
-        private float distancia_faltante;
+        private double estatura;
+        private double peso;
+        private double sancadas;
+        private double pasos;
+        private double imc;
+        private double distancia_recorrida;
+        private double distancia_faltante;
 
         //Creamos el constructor 
         public ClaseImc()
@@ -39,25 +40,25 @@ namespace IMC
             set { nombre = value; }
         }
 
-        public float Estatura
+        public double Estatura
         {
             get { return estatura; }
             set { estatura = value; }
         }
 
-        public float Peso
+        public double Peso
         {
             get { return peso; }
             set { peso = value; }
         }
 
-        public float Sancadas
+        public double Sancadas
         {
             get { return sancadas; }
             set { sancadas = value; }
         }
 
-        public float Pasos
+        public double Pasos
         {
             get { return pasos; }
             set { pasos = value; }
@@ -67,48 +68,53 @@ namespace IMC
         {
             get { return mensaje_nivel; }
         }
-        public float Imc
+        public double Imc
         {
             get { return imc; }
             set { imc = value; }
         }
 
-        public float Distancia_Recorrida
+        public double Distancia_Recorrida
         {
             get { return distancia_recorrida; }
             set { distancia_recorrida = value; }
         }
-        public float Distancia_faltante
+        public double Distancia_faltante
         {
             get { return distancia_faltante; }
             set { distancia_faltante = value; }
         }
         public void Calcular_imc()
         {
+
             imc = peso / (estatura * estatura);
+           
         }
         public void Calcular_distancia()
         {
-            distancia_recorrida = pasos * sancadas;
+            distancia_recorrida = pasos/100000 * sancadas;
         }
         // Metodos 
 
         public void calcular_nivel_imc()
         {
 
-            if (imc >= 18.55 && imc < 24.9)
-            {
-                mensaje_nivel = "Usted se encuentra en su peso normal, necesita caminar un mínimo de 3Km";
+               
 
-            }
-            else if (imc >= 24.9 && imc <= 29.9)
-            {
-                mensaje_nivel = "Usted se encuentra en sobre peso, necesita caminar un mínimo de 5Km";
-            }
-            else if (imc >= 30)
-            {
-                mensaje_nivel = "Usted se encuentra en obesidad, necesita caminar un mínimo de 10Km";
-            }
+                if (imc >= 18.55 && imc < 24.9)
+                {
+                    mensaje_nivel = "Usted se encuentra en su peso normal, necesita caminar un mínimo de 3Km";
+
+                }
+                else if (imc >= 24.9 && imc <= 29.9)
+                {
+                    mensaje_nivel = "Usted se encuentra en sobre peso, necesita caminar un mínimo de 5Km";
+                }
+                else if (imc >= 30)
+                {
+                    mensaje_nivel = "Usted se encuentra en obesidad, necesita caminar un mínimo de 10Km";
+                }
+            
         }
         public void Calcular_distancias()
         {
@@ -124,6 +130,12 @@ namespace IMC
             {
                 distancia_faltante = 10000f - distancia_recorrida;
             }
+        }
+
+        public void MensajeBox_informacion()
+        {
+           
+            
         }
     }
 }
